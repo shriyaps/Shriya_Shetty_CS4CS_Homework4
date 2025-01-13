@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #form {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1000px;
+            padding: 25px;
+            border: 1px solid #ccc;
+            margin: auto;
+            border-radius: 5px;
+        }
+
+        #form2 {
+            max-width: 1100px;
+            padding: 5px;
+            margin: auto;
+        }
+
+        .form-section {
+            width: 48%;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        .checkbox-group {
+            margin-top: 10px;
+            white-space: nowrap;
+        }
+
+        .checkbox-group label {
+            display: -webkit-inline-box;
+            margin-right: 80px;
+            margin-bottom: 0;
+        }
+
+        .checkbox-group input {
+            margin-right: 5px;
+        }
+
+        .radio-group {
+            margin-top: 10px;
+            white-space: nowrap;
+            margin-right: 427px;
+        }
+
+        .form-section textarea {
+            height: 150px;
+            width: 200%;
+            resize: vertical;
+        }
+
+        #form3 {
+            max-width: 1000px;
+            padding: 20px;
+            margin: auto;
+        }
+        #next {
+            /* position: fixed; */
+            bottom: 5px; 
+            margin-left: 1200px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer; 
+        }
+
+       
+        /* #next {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+        } */
+    </style>
+</head>
+
+<body>
+    <h1 style="text-align: center;">Welcome to my Homepage</h1><br>
+
+    <h3 style="margin-left: 210px;">Personal Info:</h3>
+    <form id="student_info">
+        <div id="form">
+            <div class="form-section">
+                <label for="firstName">Name: </label>
+                <input type="text" id="firstName" name="firstName" pattern="[A-Za-z]+" required>
+                <label for="middleName">M.Initial: </label>
+                <input type="text" id="middleName" name="middleName" pattern="[A-Za-z]+" required>
+                <label for="lastName">Last Name: </label>
+                <input type="text" id="lastName" name="lastName" pattern="[A-Za-z]+" required>
+                <label for="country">I am from: </label>
+                <select id="country" name="country" required>
+                    <option value="">--Select--</option>
+                </select>
+            </div>
+
+            <div class="form-section">
+                <label for="matriculation">Matriculation: </label>
+                <input type="text" id="matriculation" name="matriculation" pattern="\d+" required>
+                <label for="semester">Semester: </label>
+                <input type="text" id="semester" name="semester" required>
+                <label for="program">Program: </label>
+                <select id="program" name="program" required>
+                    <option value="">--Select--</option>
+                </select>
+                <label for="started">Started in: </label>
+                <input type="date" id="started" name="started" pattern="[A-Za-z]+" required>
+
+            </div>
+        </div>
+
+        <div id="form2">
+            <div class="form-section">
+                <label>I've heard about this graduate program from: </label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="heard" value="media">Media</label>
+                    <label><input type="checkbox" name="heard" value="ad">Ad</label>
+                    <label><input type="checkbox" name="heard" value="agency">Agency</label>
+                    <label><input type="checkbox" name="heard" value="other">Other</label>
+                </div>
+                <span id="checkboxError" style="color: red;"></span>
+            </div>
+
+            <div class="form-section">
+                <label>When I finish my study, I will: </label>
+                <div class="radio-group">
+                    <label><input type="radio" name="plan" value="return">Return to my country</label>
+                    <label><input type="radio" name="plan" value="findJob">Find a job in Europe</label>
+                    <label><input type="radio" name="plan" value="practicalTraining">Do the practical training and then
+                        decide</label>
+                </div>
+                <span id="radioError" style="color: red;"></span>
+            </div>
+        </div>
+        <hr>
+        <div id="form2">
+            <div class="form-section">
+                <label for="feedback"><b>Feedback For The Course:</b></label><br>
+                <textarea id="feedback" name="feedback" placeholder="Enter your feedback">I am grateful for the software development course. The content was well structured especially for someone who was still very new to coding world. Learning C programming through homeworks helped me develop a solid foundation in programming. However I believe that incorporating more hands-on projects or coding exercises in languages like Python or Java would have been beneficial. This would have helped provide a broader skill set and allowed me to explore different software development approaches. I greatly appreciate the effort that went into creating this course and I'm thankful for the valuable learning experience.</textarea>
+            </div>
+        </div>
+    </form>
+    <div class="form-section"><button type="submit" class="button-right-bottom" id="next" onclick="goNext()">Next</button></div>
+</body>
+
+</html>
+
+<script>
+    const countries = ["India", "Germany", "USA", "Canada", "Australia", "United Kingdom", "France", "Japan", "China", "Brazil", "South Africa", "Italy", "Spain", "Mexico", "Russia", "South Korea", "Netherlands", "Turkey"];
+    const countrySelect = document.getElementById('country');
+
+    for (const country of countries) {
+        countrySelect.innerHTML += `<option value="${country}">${country}</option>`;
+    }
+
+    const programs = ["Arts & Design", "Business & Law", "Communication, Media & Marketing", "Computer & Data Science", "Engineering, Sustainability & Architecture", "Health, Education & Social Work", "Hospitality", "Psychology", "Supply Chain Management"];
+    const programSelect = document.getElementById('program');
+
+    for (const program of programs) {
+        programSelect.innerHTML += `<option value="${program}">${program}</option>`;
+    }
+
+    function goNext(){
+        const form = document.getElementById('student_info');
+        const checkboxes = document.querySelectorAll('input[name="heard"]');
+        const checkboxError = document.getElementById('checkboxError');
+        const radios = document.querySelectorAll('input[name="plan"]');
+        const radioError = document.getElementById('radioError');
+
+
+        const isCheckboxChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
+        if(!isCheckboxChecked){
+            checkboxError.textContent = "Please select atleast one option";
+            return;
+        }else{
+            checkboxError.textContent = "";
+        }
+
+        const isRadioChecked = Array.from(radios).some(radio => radio.checked);
+        if(!isRadioChecked){
+            radioError.textContent = "Please select atleast an option";
+            return;
+        }else{
+            radioError.textContent = "";
+        }
+
+        if(form.checkValidity()){
+            window.location.href = "Shriya_Shetty_CS4CS_Homework4_P2.html";
+        }else{
+            form.reportValidity();
+        }
+    }
+</script>

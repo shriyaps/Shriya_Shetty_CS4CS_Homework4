@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page3</title>
+    <style>
+        .form-section {
+            padding: 35px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 30px;
+        }
+
+        .buttons button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="text-align: center;">CSS & JavaScript</h1>
+    <div class="form-section">
+        <section>
+            <p>
+                I have used <a href = "https://www.w3schools.com/Css/" target = "_blank">CSS</a> within webpage and there are 3 ways to include CSS in a webpage as follows:
+            </p>
+            <ol>
+                <li>Apply directly within the HTML element using the style attribute.</li><br>
+                <li>Place style tag inside the head section of the HTML document.</li><br>
+                <li>CSS can be written in a seperate .css extension and linked to the HTML document using the link tag.
+                </li><br>
+            </ol>
+        </section>
+
+        <section>
+            <p>
+                The reasons CSS used in a webpage are:
+            </p>
+            <ol>
+                <li>It improves user experience by making content easy to read & navigate.</li><br>
+                <li>It is used to add colors, fonts & visual elements that make a web more attractive and professional.
+                </li><br>
+                <li>It controls how the content is displayed.</li><br>
+                <li>CSS allows us to change the overall theme of the webpage based on the user's preference easily.</li>
+                <br>
+            </ol>
+        </section>
+
+        <section>
+            <p>
+                We also use <a href = "https://www.w3schools.com/js/DEFAULT.asp" target = "_blank">JavaScript</a> in webpage development. The main reasons are as follows:
+            </p>
+            <ol>
+                <li>JavaScript adds interactivity by using event handlers like onlick, onchange, etc.</li><br>
+                <li>JavaScript can change parts of a webpage without refreshing the whole page. For eg: changing the
+                    button color on just 1 click.</li><br>
+                <li>It allows developers to run scripts directly in the client-side instead of sending request to the
+                    server which improves performance and efficiency. Eg: Form validation.</li><br>
+            </ol>
+        </section>
+
+        <section>
+            <p>
+                I've done this project myself and accept the consequences if found other ways.
+            </p>
+            <label>You can reach me at: </label><input type="email" id="email" name="email" required>
+            <span id="emailError" style="color: red; display:none;"></span>
+        </section>
+    </div>
+    <div class="buttons">
+        <button onclick="goPrevious()" id="previous" style="margin-right: 10px;">Previous</button>
+        <button onclick="submit()" id="next" style="margin-right: 100px;">Submit</button>
+    </div>
+</body>
+
+</html>
+
+<script>
+    function goPrevious() {
+        window.location.href = "Shriya_Shetty_CS4CS_Homework4_P2.html";
+    }
+
+    function submit() {
+        const email = document.getElementById('email');
+        const emailError = document.getElementById('emailError');
+
+        if (!email.checkValidity()) {
+            emailError.textContent = "Please enter a valid email address.";
+            emailError.style.display = "block";
+        } else {
+            emailError.style.display = "none";
+            window.location.href = "Shriya_Shetty_CS4CS_Homework4.html";
+        }
+    }
+</script>
